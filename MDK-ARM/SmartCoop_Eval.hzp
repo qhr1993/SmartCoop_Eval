@@ -1,0 +1,153 @@
+<!DOCTYPE CrossStudio_Project_File>
+<solution Name="SmartCoop_Eval" target="8" version="2">
+  <project Name="SmartCoop_Eval">
+    <configuration
+      CMSIS_CORE="Yes"
+      Name="Common"
+      Placement="Flash"
+      Target="STM32F722ZE"
+      arm_architecture="v7EM"
+      arm_core_type="Cortex-M7"
+      arm_fp_abi="Hard"
+      arm_fpu_type="FPv5-SP-D16"
+      arm_linker_heap_size="22000"
+      arm_linker_jtag_pad_pre_dr="1"
+      arm_linker_jtag_pad_pre_ir="5"
+      arm_linker_process_stack_size="0"
+      arm_linker_stack_size="8000"
+      arm_simulator_memory_simulation_filename="$(TargetsDir)/STM32/STM32SimulatorMemory$(HostDLL)"
+      arm_simulator_memory_simulation_parameter="STM32F722ZE;0x80000;0x40000"
+      arm_target_loader_applicable_loaders="Flash"
+      arm_target_loader_default_loader="Flash"
+      arm_target_trace_interface_type="None"
+      c_preprocessor_definitions="USE_HAL_DRIVER;STM32F722xx"
+      c_user_include_directories="../Inc;../Drivers/STM32F7xx_HAL_Driver/Inc;../Drivers/STM32F7xx_HAL_Driver/Inc/Legacy;../Drivers/CMSIS/Device/ST/STM32F7xx/Include;../Drivers/CMSIS/Include;../Src;../Src/BSP/Adafruit_Shield;../Src/Middleware/FatFs/src;../Src/Middleware/FatFs/src/drivers;../Src/Addons/PDM/Inc"
+      debug_register_definition_file="$(TargetsDir)/STM32/STM32F7x2_Peripherals.xml"
+      linker_memory_map_file="$(TargetsDir)/STM32/STM32F722ZE_MemoryMap.xml"
+      linker_printf_fp_enabled="Double"
+      linker_section_placement_file="$(StudioDir)/targets/Cortex_M/flash_placement.xml"
+      macros="DeviceVectorsFile=STM32F722xx.vec"
+      project_directory=""
+      project_type="Executable"
+      property_groups_file_path="$(TargetsDir)/STM32/propertyGroups.xml"
+      target_get_partname_script="GetPartName()"
+      target_match_partname_script="MatchPartName(&quot;$(Target)&quot;)"
+      target_script_file="$(TargetsDir)/STM32/STM32_Target.js"
+      target_trace_initialize_script="EnableTrace(&quot;$(TraceInterfaceType)&quot;)" />
+    <configuration
+      Name="Flash"
+      arm_target_flash_loader_file_path="$(LOADER:$(TargetsDir)/STM32/Release/STM32F2xx_Loader_rpc.elf)"
+      arm_target_loader_can_erase_all="Yes"
+      arm_target_loader_can_lock_all="No"
+      arm_target_loader_can_lock_range="No"
+      arm_target_loader_can_unlock_all="No"
+      arm_target_loader_can_unlock_range="No"
+      target_reset_script="FLASHReset()" />
+    <configuration Name="RAM" target_reset_script="Reset()" />
+    <folder Name="Source Files">
+      <configuration Name="Common" filter="c;cpp;cxx;cc;h;s;asm;inc" />
+    </folder>
+    <folder Name="System Files">
+      <file file_name="$(StudioDir)/source/thumb_crt0.s" />
+      <file file_name="$(TargetsDir)/STM32/STM32_Startup.s">
+        <configuration
+          Name="Common"
+          c_preprocessor_definitions="STARTUP_FROM_RESET;USE_FULL_ASSERT" />
+      </file>
+      <file file_name="$(TargetsDir)/STM32/$(DeviceVectorsFile)" />
+    </folder>
+    <folder Name="Application/MDK-ARM">
+      <file file_name="startup_stm32f722xx.s">
+        <configuration Name="Common" build_exclude_from_build="Yes" />
+      </file>
+    </folder>
+    <folder Name="Drivers/STM32F7xx_HAL_Driver">
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma_ex.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_dma.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_spi.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr_ex.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sai_ex.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash_ex.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_usart.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc_ex.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_pwr.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_cortex.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_rcc.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim_ex.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_flash.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_gpio.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_i2c_ex.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_sai.c" />
+      <file file_name="../Drivers/STM32F7xx_HAL_Driver/Src/stm32f7xx_hal_tim.c" />
+    </folder>
+    <folder Name="::CMSIS" />
+    <folder Name="Application/User">
+      <file file_name="../Src/stm32f7xx_hal_msp.c" />
+      <file file_name="../Src/main.c" />
+      <file file_name="../Src/stm32f7xx_it.c" />
+      <file file_name="TSL2591.c" />
+      <file file_name="../Src/SD.c" />
+      <file file_name="../Src/SPI.c" />
+      <file file_name="../Src/ADC_audio.c" />
+      <file file_name="../Src/audio_record.c" />
+      <file file_name="../Src/WAV.c" />
+    </folder>
+    <folder Name="Drivers/CMSIS">
+      <file file_name="..//Src/system_stm32f7xx.c" />
+    </folder>
+    <folder Name="BSP">
+      <folder Name="Adafruit_SD">
+        <file file_name="../Src/BSP/Adafruit_Shield/stm32_adafruit_sd.c" />
+      </folder>
+    </folder>
+    <folder Name="Middleware">
+      <folder Name="FatFs">
+        <file file_name="../Src/Middleware/FatFs/src/diskio.c" />
+        <file file_name="../Src/Middleware/FatFs/src/ff.c" />
+        <file file_name="../Src/Middleware/FatFs/src/ff_gen_drv.c" />
+        <file file_name="../Src/Middleware/FatFs/src/drivers/sd_diskio.c" />
+        <file file_name="../Src/Middleware/FatFs/src/option/ccsbcs.c" />
+        <file file_name="../Src/Middleware/FatFs/src/option/syscall.c" />
+      </folder>
+      <folder Name="PDM2PCM">
+        <file file_name="../Src/Addons/PDM/Inc/pdm2pcm_glo.h" />
+        <file file_name="../Src/Addons/PDM/Lib/libPDMFilter_CM7_GCC_wc32.a" />
+      </folder>
+    </folder>
+  </project>
+  <configuration Name="THUMB Debug" inherited_configurations="THUMB;Debug" />
+  <configuration
+    Name="THUMB"
+    Platform="ARM"
+    arm_instruction_set="Thumb"
+    arm_library_instruction_set="Thumb"
+    c_preprocessor_definitions="__THUMB"
+    hidden="Yes" />
+  <configuration
+    Name="Debug"
+    c_preprocessor_definitions="DEBUG"
+    gcc_debugging_level="Level 3"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="None"
+    hidden="Yes" />
+  <configuration
+    Name="THUMB Release"
+    inherited_configurations="THUMB;Release" />
+  <configuration
+    Name="Release"
+    c_preprocessor_definitions=""
+    gcc_debugging_level="Level 3"
+    gcc_omit_frame_pointer="Yes"
+    gcc_optimization_level="None"
+    hidden="Yes" />
+  <configuration
+    Name="Common"
+    arm_linker_fiq_stack_size="8000"
+    arm_linker_heap_size="22000"
+    arm_linker_irq_stack_size="8000"
+    arm_linker_stack_size="8000"
+    arm_linker_svc_stack_size="8000"
+    c_user_include_directories="$(SolutionDir)" />
+</solution>
